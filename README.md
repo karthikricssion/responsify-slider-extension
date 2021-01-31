@@ -16,4 +16,12 @@ Responsify slider is an extension that helps to check the responsive of the webs
 - [x] Learn about Building Basic firefox extention
 - [x] Build basic Beta version of concept/ idea
 - [ ] Build one by one as mentioned in thoughts
-- [ ] work on Light / Dark mode
+- [ ] Work on Light / Dark mode
+
+### Steps to load this extension in Firefox
+- Type "about:debugging" on address bar
+- click "This Firefox" (in newer versions of Firefox), click "Load Temporary Add-on"
+- select any file in your extension's directory.
+
+For video reference 
+[Video](https://www.youtube.com/watch?v=cer9EUKegG4&feature=emb_title)
