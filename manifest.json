@@ -16,5 +16,6 @@
         "default_title": "Responsify",
         "default_icon": "icons/browser-96.png",
         "default_popup": "popup/slider.html"
-    }
+    },
+    "author": "Karthikeyan Rajendran"
 }
