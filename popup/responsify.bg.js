@@ -44,8 +44,8 @@ browser.tabs.executeScript({file: "/content_scripts/responsify.js"})
         currentWindow: true
     }).then((activeTabInfo) => {
         let tabId = activeTabInfo[0].id
-        let iFrameSettings = {}
-        rangeInput.value = showRangeValue.textContent = rangeInput.max = iFrameSettings['width'] = activeTabInfo[0].width
+        let cloneActiveTabInfo = { ...activeTabInfo[0] }
+        rangeInput.value = showRangeValue.textContent = rangeInput.max = activeTabInfo[0].width
         
         // Clear browser local - For development purpose
         // browser.storage.local.clear()
@@ -53,7 +53,6 @@ browser.tabs.executeScript({file: "/content_scripts/responsify.js"})
         // Check and GET active tab stored iFrame Settings
         browser.storage.local.get().then((saveIFrameInfo) => {
             if(saveIFrameInfo.hasOwnProperty(activeTabInfo[0].id)) {
-                cloneActiveTabInfo = { ...activeTabInfo[0] }
                 cloneActiveTabInfo.width = rangeInput.value = saveIFrameInfo[activeTabInfo[0].id].width
                 // activeTabInfo[0].height = saveIFrameInfo[activeTabInfo[0].height]
                 checkAndSendMessage(tabId, false, cloneActiveTabInfo, true, showRangeValue)
@@ -62,7 +61,7 @@ browser.tabs.executeScript({file: "/content_scripts/responsify.js"})
             }
 
             // Listening to range onChange event and updating to view
-            rangeInput.addEventListener('change', (e) => {
+            rangeInput.addEventListener('input', (e) => {
                 // Update activeTab width to changed value
                 cloneActiveTabInfo.width = rangeInput.value = e.target.value
                 checkAndSendMessage(tabId, false, cloneActiveTabInfo, false, showRangeValue)
