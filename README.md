@@ -1,14 +1,13 @@
 ![Logo](icons/browser-96.png)
 
-# Responsify-slider-extension [Beta]
+# Responsify-slider-extension [Beta v1]
 Responsify slider is an extension that helps to check the responsive of the website not specif to any width and height. Use the slider to set the width in your view port.
 
-![Screenshot](screenshots/plugin-screenshot-beta.png)
+![Screenshot](screenshots/plugin-screenshot-beta-v1.png)
 
 ### Thoughts
 ---
 - Add live change of slider
-- Add height slider
 - Reset 
 - Show most frequent resolution
 - Better UI
@@ -17,8 +16,8 @@ Responsify slider is an extension that helps to check the responsive of the webs
 ---
 - [x] Learn about Building Basic firefox extention
 - [x] Build basic Beta version of concept/ idea
-- [ ] Build one by one as mentioned in thoughts
-- [ ] Work on Light / Dark mode
+- [x] Worked on CSS styles
+- [x] Research on loading all websites inside iframe
 
 ### Steps to load this extension in Firefox
 ---

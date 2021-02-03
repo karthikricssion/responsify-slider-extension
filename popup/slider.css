@@ -1,3 +1,119 @@
 html, body {
     font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+*, ::after, ::before {
+    box-sizing: border-box;
+}
+
+/* Popup wrapper */
+.popup-wrapper {
+    width: 320px;
+}
+
+/* Layout */
+.full-height {
+    height: 100%;
+    min-height: 0;
+}
+
+.full-width {
+    width: 100%;
+}
+
+.c-flex {
+    display: flex;
+    flex: auto;
+    min-width: 0;
+}   
+
+.c-flex-row {
+    flex-direction: row;
+}
+
+.c-flex-column {
+    flex-direction: column;
+}
+
+/* Range CSS */
+.range-wrap {
+    position: relative;
+    margin: 0 auto;
+    padding: 16px;
+}
+.range {
+    width: 100%;
+}
+
+input[type=range]{
+    /* fix for FF unable to apply focus style bug  */
+    border: 1px solid white; 
+}
+
+input[type=range]::-moz-range-track {
+    height: 7px;
+    background: #4ed164;
+    border: none;
+    border-radius: 20px;
+}
+
+input[type=range]::-moz-range-thumb {
+    border: none;
+    height: 16px;
+    width: 16px;
+    border-radius: 50%;
+    background-color: #ffffff; 
+    border: 1px solid #808080;
+    cursor: pointer;
+}
+
+/*hide the outline behind the border*/
+input[type=range]:-moz-focusring{
+    outline: 1px solid white;
+    outline-offset: -1px;
+}
+
+input[type=range]:focus::-moz-range-track {
+    background: #4ed164;
+}
+
+/* Main app css */
+/* Content */
+.popup-wrapper .content .range-information-wrapper {
+    width: 100%;
+    text-align: center;
+    padding: 8px;
+}
+
+.popup-wrapper .content .range-information-wrapper h4 {
+    margin: 0;
+    margin-bottom: 8px;
+    margin-top: 8px;
+}
+
+.popup-wrapper .content .range-information-wrapper p {
+    margin: 0;
+    margin-bottom: 16px;
+}
+
+.popup-wrapper .content .range-information-wrapper p .resolution-info {
+    color: #bdbdbd;
+    font-size: 12px;
+    display: block;
+    margin-top: 2px;
+}
+
+.popup-wrapper .footer {
+    padding: 8px;
+    background-color: #F9F9FA;
+    border-top: 1px solid #E3E3E5;
+    font-size: 12px;
+    font-style: italic;
+}
+
+.popup-wrapper .footer p {
+    margin: 0;
 }

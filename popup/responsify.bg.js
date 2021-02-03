@@ -5,6 +5,10 @@ function saveLocal(tabId, data) {
     browser.storage.local.set(contentToStore)
 }
 
+function showResolution(showRangeValue, width, height) {
+    showRangeValue.textContent = `${width} x ${height}`
+}
+
 // Check and save iFrameSetting and send it to web page
 function checkAndSendMessage(tabId, isSaved, activeTabInfo, initiate, showRangeValue) {
     let iFrameSettings = {}
@@ -21,7 +25,7 @@ function checkAndSendMessage(tabId, isSaved, activeTabInfo, initiate, showRangeV
 
     // Send data to content script to update DOM changes
     browser.tabs.sendMessage(tabId, {iFrameSettings}).then(() => {
-        showRangeValue.textContent = activeTabInfo.width
+        showResolution(showRangeValue, activeTabInfo.width, activeTabInfo.height)
         console.log(`Message recieved successfully`)
     }, (e) => {
         console.log(`Error sending message: ${e}`)
@@ -45,7 +49,8 @@ browser.tabs.executeScript({file: "/content_scripts/responsify.js"})
     }).then((activeTabInfo) => {
         let tabId = activeTabInfo[0].id
         let cloneActiveTabInfo = { ...activeTabInfo[0] }
-        rangeInput.value = showRangeValue.textContent = rangeInput.max = activeTabInfo[0].width
+        rangeInput.value = rangeInput.max = activeTabInfo[0].width
+        showResolution(showRangeValue, activeTabInfo[0].width, activeTabInfo[0].height)
         
         // Clear browser local - For development purpose
         // browser.storage.local.clear()
@@ -54,7 +59,6 @@ browser.tabs.executeScript({file: "/content_scripts/responsify.js"})
         browser.storage.local.get().then((saveIFrameInfo) => {
             if(saveIFrameInfo.hasOwnProperty(activeTabInfo[0].id)) {
                 cloneActiveTabInfo.width = rangeInput.value = saveIFrameInfo[activeTabInfo[0].id].width
-                // activeTabInfo[0].height = saveIFrameInfo[activeTabInfo[0].height]
                 checkAndSendMessage(tabId, false, cloneActiveTabInfo, true, showRangeValue)
             } else {
                 checkAndSendMessage(tabId, true, cloneActiveTabInfo, false, showRangeValue)
