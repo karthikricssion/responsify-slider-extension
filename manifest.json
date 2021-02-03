@@ -6,6 +6,12 @@
     "icons": {
         "96": "icons/icon-96.png"
     },
+    "content_scripts": [
+        {
+          "matches": ["*://*/*"],
+          "js": ["content_scripts/responsify.js"]
+        }
+    ],
     "permissions": [
         "tabs",
         "<all_urls>",
